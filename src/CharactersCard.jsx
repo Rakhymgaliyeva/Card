@@ -1,9 +1,11 @@
 import { Card } from "antd";
+import { Link } from "react-router-dom";
 
 
 export default function CharacterCard({id, name, status, gender, image}) {
 
   return (
+    <Link to={`/character/${id}`}>
     <Card
     key={id}
     hoverable
@@ -14,5 +16,6 @@ export default function CharacterCard({id, name, status, gender, image}) {
         <p>{status}</p>
         <p>{gender}</p>
   </Card>
+  </Link>
   )
 }
