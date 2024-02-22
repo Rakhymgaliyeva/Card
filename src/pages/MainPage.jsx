@@ -8,6 +8,7 @@ function MainPage() {
   const [characters, setCharacters] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [name, setName] = useState();
+  const [isLoading, setIsLoading] = useState(true)
   const serach = useDebounce(name)
 
  
@@ -22,6 +23,14 @@ function MainPage() {
       setCharacters(res);
     }
     fetchCharacters()
+    try {
+      setIsLoading(false)
+      fetchCharacter()
+    } catch (error) {
+      console.log(error)
+    }finally{
+      setIsLoading(true)
+    }
   }, [currentPage, serach])
 
   return (
